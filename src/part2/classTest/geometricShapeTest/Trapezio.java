@@ -21,15 +21,13 @@ public class Trapezio extends MasterShape {
     }
 
     @Override
-    public double computeArea() {
+    public void computeArea() {
         area = (B+b)*h/2;
-        return area;
     }
 
     @Override
-    public double computePerimeter() {
+    public void computePerimeter() {
         perimeter = l1+l2+l3+l4;
-        return perimeter;
     }
 
     public double getL1() {

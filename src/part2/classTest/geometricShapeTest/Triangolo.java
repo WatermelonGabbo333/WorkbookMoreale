@@ -17,15 +17,13 @@ public class Triangolo extends MasterShape{
     }
 
     @Override
-    public double computeArea() {
+    public void computeArea() {
         area = b*h/2;
-        return area;
     }
 
     @Override
-    public double computePerimeter() {
+    public void computePerimeter() {
         perimeter = l1+l2+l3;
-        return perimeter;
     }
 
     public double getB() {

@@ -1,5 +1,7 @@
 package part2.classTest.geometricShapeTest;
 
+import java.awt.geom.Area;
+
 public class Tester {
     public static void main(String[] args) {
         Quadrato quadrato1 = new Quadrato(5);
@@ -12,13 +14,14 @@ public class Tester {
 
         MasterShape[] figure = new MasterShape[3];
 
-        System.out.println(quadrato1.computeArea());
 
         for (int i=0;i< figure.length;i++){
             System.out.printf("Area %d = ",i+1);
-            System.out.println(figure[i].computeArea());
+            figure[i].computeArea();
+            System.out.println(figure[i].getArea());
             System.out.printf("Perimetro %d = ",i+1);
-            System.out.println(figure[i].computePerimeter());
+            figure[i].computePerimeter();
+            System.out.println(figure[i].getPerimeter());
         }
 
     }
