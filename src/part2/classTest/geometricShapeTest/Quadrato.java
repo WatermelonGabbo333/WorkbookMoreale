@@ -10,12 +10,12 @@ public class Quadrato extends MasterShape {
 
     @Override
     public void computeArea(){
-        area = l*l;
+        area = this.l*this.l;
     }
 
     @Override
     public void computePerimeter() {
-        perimeter = 4*l;
+        perimeter = 4*this.l;
     }
 
     public double getL() {

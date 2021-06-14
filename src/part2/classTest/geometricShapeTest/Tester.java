@@ -14,6 +14,9 @@ public class Tester {
 
         MasterShape[] figure = new MasterShape[3];
 
+        figure[0] = quadrato1;
+        figure[1] = triangolo1;
+        figure[2] = trapezio1;
 
         for (int i=0;i< figure.length;i++){
             System.out.printf("Area %d = ",i+1);

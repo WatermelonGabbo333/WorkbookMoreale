@@ -22,12 +22,12 @@ public class Trapezio extends MasterShape {
 
     @Override
     public void computeArea() {
-        area = (B+b)*h/2;
+        area = (this.B+this.b)*this.h/2;
     }
 
     @Override
     public void computePerimeter() {
-        perimeter = l1+l2+l3+l4;
+        perimeter = this.l1+this.l2+this.l3+this.l4;
     }
 
     public double getL1() {

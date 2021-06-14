@@ -18,12 +18,12 @@ public class Triangolo extends MasterShape{
 
     @Override
     public void computeArea() {
-        area = b*h/2;
+        area = this.b*this.h/2;
     }
 
     @Override
     public void computePerimeter() {
-        perimeter = l1+l2+l3;
+        perimeter = this.l1+this.l2+this.l3;
     }
 
     public double getB() {
