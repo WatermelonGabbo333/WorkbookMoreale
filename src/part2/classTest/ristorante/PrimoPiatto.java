@@ -1,6 +1,6 @@
-package part2.classTest;
+package part2.classTest.ristorante;
 
-public class SecondoPiatto {
+public class PrimoPiatto {
 
     private String nome;
     private int porzioni;
@@ -30,13 +30,13 @@ public class SecondoPiatto {
         this.arrivato = arrivato;
     }
 
-    public SecondoPiatto(String nome, int porzioni){
+    public PrimoPiatto(String nome,int porzioni){
         setNome(nome);
         setPorzioni(porzioni);
     }
 
     public void prettyPrint(){
-        System.out.println("Sta arrivando il secondo . . . ");
+        System.out.println("Sta arrivando il primo . . .");
         System.out.printf("Ecco servito %d di %s",this.porzioni ,this.nome);
         setArrivato(true);
     }

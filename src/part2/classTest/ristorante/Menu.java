@@ -1,4 +1,4 @@
-package part2.classTest;
+package part2.classTest.ristorante;
 
 public class Menu {
     public static void main(String[] args) {
