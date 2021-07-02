@@ -1,11 +1,13 @@
 package part2.classTest.collections.biblioteca;
 
+import java.util.List;
+
 public class Utente {
 
     private String nome;
     private String cognome;
     private int id=0;
-    private Prestito prestito;
+    private Prestito prestito = new Prestito();
 
     public Utente(String nome, String cognome, int id) {
         this.nome = nome;

@@ -10,16 +10,16 @@ public class Libro {
     private int numPagine=0;
     private int numVolumi=0;
     private int numCapitoli=0;
-    private List<Categoria> genere;
+    private List<Categoria> genere = new ArrayList<>();
 
 
-    public Libro(String autore, int dataPubblicazione, int numPagine, int numVolumi, int numCapitoli, List<Categoria> genere) {
+
+    public Libro(String autore, int dataPubblicazione, int numPagine, int numVolumi, int numCapitoli) {
         this.autore = autore;
         this.dataPubblicazione = dataPubblicazione;
         this.numPagine = numPagine;
         this.numVolumi = numVolumi;
         this.numCapitoli = numCapitoli;
-        this.genere = genere;
     }
 
     public List<Categoria> getGenere() {
