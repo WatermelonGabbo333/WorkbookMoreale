@@ -23,6 +23,7 @@ public class ToDoManager
         System.out.println("Inserisci stato : (tra da_fare, in_esecuzione , completata , annullata)");
         t.setStato(Stato.valueOf(in.nextLine()));
         //aggiungere t a Map
+        ToDoRepository._repository.add(t);
 
     }
     // - gestisce input utente (cioè loop di richiesta di quali campi devono essere modificati)
@@ -66,8 +67,8 @@ public class ToDoManager
                     break;
             }
         }
-        //inserire copia in Map
         // Salvataggio delle modifiche tramite ToDoRepository (update...)
+        ToDoRepository._repository.update(copia);
     }
 
     public static void removeToDo(){

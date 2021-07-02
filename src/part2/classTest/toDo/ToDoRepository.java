@@ -39,14 +39,14 @@ public class ToDoRepository implements Serializable
 
     };
 
-    public void add(ToDo t) {
+    protected void add(ToDo t) {
         // si deve entrare nell'oggetto t e leggere il suo ID
 
         // per poi salvarlo nella mappa correttamente (con put(ID, t))
         _data.put(t.get_ID(),t);
     }
 
-    public void update(ToDo t) {
+    protected void update(ToDo t) {
         // si prende l'ID dall'oggetto t
         // si recupera dalla mappa il TO-DO corrispondente con get(t), per controllo
         // si sostituisce con put(ID, t)
@@ -57,7 +57,7 @@ public class ToDoRepository implements Serializable
     public List<ToDo> getToDoList() {
         ArrayList lista= ((ArrayList) _data);
         // restituisce lista di tutti i TO-DO esistenti
-        return null;
+        return lista;
     }
 
     public void writeToFile(String fileName) {
