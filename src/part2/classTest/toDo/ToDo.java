@@ -14,10 +14,16 @@ public class ToDo implements Serializable
     protected long _ID;
     private String titolo;
     private String descrizione;
-    private final LocalDate dataInserimento;
+    private LocalDate dataInserimento;
     private LocalDate dataConsegna;
     private Priorità priorità;
+    public enum Priorità {
+        alta,media,bassa
+    }
     private Stato stato;
+    public enum Stato {
+        da_fare, in_esecuzione , completata , annullata
+    }
 
     protected long getNewId() {
         return ++idSeed;
@@ -26,6 +32,11 @@ public class ToDo implements Serializable
     protected ToDo() {
         this._ID = getNewId();
         this.dataInserimento = LocalDate.now();
+    }
+
+    protected ToDo(Long id){
+        this.dataInserimento = LocalDate.now();
+
     }
 
 
@@ -44,6 +55,10 @@ public class ToDo implements Serializable
 
     public long get_ID() {
         return this._ID;
+    }
+
+    public void set_ID(long _ID) {
+        this._ID = _ID;
     }
 
     public String getTitolo() {
@@ -90,10 +105,14 @@ public class ToDo implements Serializable
         this.stato = stato;
     }
 
-    public ToDo cloneForUpdate() {
+    public void setDataInserimento(LocalDate dataInserimento) {
+        this.dataInserimento = dataInserimento;
+    }
+
+    public ToDo cloneForUpdate(Long id) {
         // fabbrica una copia esatta del To-Do (compreso l'ID)
-        ToDo copia = new ToDo();
-        copia._ID = this._ID;
+        ToDo copia = new ToDo(id);
+        copia._ID = id;
         copia.titolo = this.titolo;
         copia.descrizione = this.descrizione;
         copia.dataConsegna = this.dataConsegna;
