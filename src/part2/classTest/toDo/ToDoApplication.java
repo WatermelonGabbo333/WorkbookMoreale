@@ -18,9 +18,11 @@ public class ToDoApplication
     private static ToDoRepository repository;
 
     public static void main(String[] args) throws Exception {
-        final String fileIniziale = "todos.txt";
+        final String fileIniziale = "todos.ser";
         boolean inizializzato = ToDoRepository.init(fileIniziale);
         repository = ToDoRepository.getRepo();
+  //      Long newid = repository.getNewId();
+  //      System.out.println("Il nuovo id sarà : "+ newid);
         ToDoMenuBranch menu = createMenu();
         menu.run();
         repository.writeToFile();

@@ -52,7 +52,7 @@ public class ToDoManager
         if (ToDoRepository._repository._data.containsKey(id)) {
             ToDo todo = ToDoRepository.getToDo(id);
             // Si chiede un "clone" del TO-DO
-            Long idPerClone = todo.get_ID();
+            Long idPerClone = todo.getID();
             ToDo copia = todo.cloneForUpdate(idPerClone);
             // Loop di richiesta dati da modificare
             while (!uscita) {

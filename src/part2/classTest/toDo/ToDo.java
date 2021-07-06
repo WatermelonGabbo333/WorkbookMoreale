@@ -7,8 +7,6 @@ import java.util.Date;
 public class ToDo implements Serializable
 {
 
-    // Contatore static, di classe
-    private static long idSeed;
 
     // Properties dell'istanza
     private long _ID;
@@ -25,12 +23,8 @@ public class ToDo implements Serializable
         da_fare, in_esecuzione , completata , annullata
     }
 
-    protected long getNewId() {
-        return ++idSeed;
-    }
 
     protected ToDo() {
-        this._ID = getNewId();
         this.dataInserimento = LocalDate.now();
     }
 
@@ -45,19 +39,12 @@ public class ToDo implements Serializable
     // ...costruttore con ID incrementale...
 
 
-    public static long getIdSeed() {
-        return idSeed;
-    }
 
-    public static void setIdSeed(long idSeed) {
-        ToDo.idSeed = idSeed;
-    }
-
-    public long get_ID() {
+    public long getID() {
         return this._ID;
     }
 
-    public void set_ID(long _ID) {
+    public void setID(long _ID) {
         this._ID = _ID;
     }
 
@@ -111,7 +98,7 @@ public class ToDo implements Serializable
 
     public String prettyPrint(){
         String riga = String.format(" ID : %d \n Titolo : %s \n Descrizione : %s \n Data di inserimento : %s \n Data di consegna : %s \n Priorità : %s \n Stato : %s",
-                get_ID(),getTitolo(),getDescrizione(),getDataInserimento().toString(),getDataConsegna().toString(),getPriorità().toString(),getStato().toString());
+                getID(),getTitolo(),getDescrizione(),getDataInserimento().toString(),getDataConsegna().toString(),getPriorità().toString(),getStato().toString());
 
         return riga;
     }

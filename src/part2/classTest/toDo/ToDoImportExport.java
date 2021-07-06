@@ -12,7 +12,7 @@ public class ToDoImportExport {
     // Mantiene i formati di import e di export (conversione da/verso stringa)
 
     private static String convertToString(ToDo t) {
-        String singola = t.get_ID() +";"+t.getTitolo()+";"+t.getDescrizione()+";"+t.getDataInserimento()+";"+t.getDataConsegna()+";"+t.getPriorità()+";"+t.getStato();
+        String singola = t.getID() +";"+t.getTitolo()+";"+t.getDescrizione()+";"+t.getDataInserimento()+";"+t.getDataConsegna()+";"+t.getPriorità()+";"+t.getStato();
         return singola;
     }
     //da _repository.to-do a String in file
@@ -52,7 +52,7 @@ public class ToDoImportExport {
             if (s!=null){
                 String[] linea= s.split(";");
                 ToDo t = new ToDo();
-                t.set_ID(Long.parseLong(linea[0]));
+                t.setID(Long.parseLong(linea[0]));
                 t.setTitolo(linea[1]);
                 t.setDescrizione(linea[2]);
                 t.setDataInserimento(LocalDate.parse(linea[3]));

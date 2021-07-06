@@ -36,6 +36,12 @@ public class ToDoRepository implements Serializable
     private static String _fileName ;                    // file da usare per serializzazione/deserializzazione
     private static boolean _init = false;               // flag che indica se il ToDoRepository è stato inizializzato
 
+    private long idSeed;
+
+    protected long getNewId() {
+        return ++idSeed;
+    }
+
 
     public static boolean init(String fileName) {
         try {
@@ -76,17 +82,16 @@ public class ToDoRepository implements Serializable
     };
 
     protected void add(ToDo t) {
-        // si deve entrare nell'oggetto t e leggere il suo ID
-
-        // per poi salvarlo nella mappa correttamente (con put(ID, t))
-        _repository._data.put(t.get_ID(),t);
+        Long newid = getNewId();
+        t.setID(newid);
+        _repository._data.put(newid,t);
     }
 
     protected void update(ToDo t) {
         // si prende l'ID dall'oggetto t
         // si recupera dalla mappa il TO-DO corrispondente con get(t), per controllo
         // si sostituisce con put(ID, t)
-         _repository._data.put(t.get_ID(),t);
+         _repository._data.put(t.getID(),t);
 
     }
 
