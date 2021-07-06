@@ -11,7 +11,7 @@ public class ToDo implements Serializable
     private static long idSeed;
 
     // Properties dell'istanza
-    protected long _ID;
+    private long _ID;
     private String titolo;
     private String descrizione;
     private LocalDate dataInserimento;
@@ -108,6 +108,15 @@ public class ToDo implements Serializable
     public void setDataInserimento(LocalDate dataInserimento) {
         this.dataInserimento = dataInserimento;
     }
+
+    public String prettyPrint(){
+        String riga = String.format(" ID : %d \n Titolo : %s \n Descrizione : %s \n Data di inserimento : %s \n Data di consegna : %s \n Priorità : %s \n Stato : %s",
+                get_ID(),getTitolo(),getDescrizione(),getDataInserimento().toString(),getDataConsegna().toString(),getPriorità().toString(),getStato().toString());
+
+        return riga;
+    }
+
+
 
     public ToDo cloneForUpdate(Long id) {
         // fabbrica una copia esatta del To-Do (compreso l'ID)

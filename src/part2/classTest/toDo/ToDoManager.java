@@ -18,7 +18,7 @@ public class ToDoManager
         System.out.println("Inserisci descrizione : ");
         t.setDescrizione(in.nextLine());
         try {
-            System.out.println("Inserisci data di consegna : ");
+            System.out.println("Inserisci data di consegna (yyyy-mm-gg) : ");
             t.setDataConsegna(LocalDate.parse(in.nextLine()));
         }catch (Exception e){
             System.out.println("Non hai inserito correttamente la data ritorno al menu precedente");
@@ -60,6 +60,7 @@ public class ToDoManager
                 System.out.println("Scegli tra : ");
                 System.out.println("titolo,descrizione,data di consegna,priorità,stato : ");
                 System.out.println("Per uscire premi q");
+                in = new Scanner(System.in);
                 String campo = in.nextLine();
                 switch (campo) {
                     case "titolo":

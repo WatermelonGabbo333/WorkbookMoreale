@@ -23,7 +23,7 @@ public class ToDoRepository implements Serializable
     // - restituisce una copia di tutti i TO-DO come ArrayList, da
     //   usare per le visualizzazioni di ToDoList
 
-    public static void loadFromFile(String _fileName) throws IOException, ClassNotFoundException {
+    public static void loadFromFile() throws IOException, ClassNotFoundException {
         try (FileInputStream file = new FileInputStream(_fileName);
              ObjectInputStream in = new ObjectInputStream(file);)
         {
@@ -49,7 +49,7 @@ public class ToDoRepository implements Serializable
         return _init;
     }
 
-    public static ToDoRepository getRepo(String _fileName) throws Exception {
+    public static ToDoRepository getRepo() throws Exception {
         if(!_init) {
             throw new Exception("ToDo Repository has not been initialized");
         }
@@ -57,7 +57,7 @@ public class ToDoRepository implements Serializable
             if(!Files.exists(Paths.get(_fileName)))
                 _repository = new ToDoRepository();
             else
-                loadFromFile(_fileName);
+                loadFromFile();
         }
         return _repository;
     }
@@ -91,12 +91,13 @@ public class ToDoRepository implements Serializable
     }
 
     public List<ToDo> getToDoList() {
-        ArrayList lista= ((ArrayList) _data);
         // restituisce lista di tutti i TO-DO esistenti
-        return lista;
+        List<ToDo> lToDo = new ArrayList<>() ;
+        lToDo.addAll( _repository._data.values());
+        return lToDo;
     }
 
-    public void writeToFile(String fileName) throws IOException {
+    public void writeToFile() throws IOException {
         try(FileOutputStream file = new FileOutputStream(_fileName);
             ObjectOutputStream out = new ObjectOutputStream(file)) {
             out.writeObject(_repository);

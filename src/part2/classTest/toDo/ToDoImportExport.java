@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Scanner;
 
 public class ToDoImportExport {
     // Gestisce import/export da file
@@ -17,10 +18,9 @@ public class ToDoImportExport {
     //da _repository.to-do a String in file
     //scrivo su file
 
-    public static void exportToFile() throws IOException {
-        // Chiuede all'utente un nome file di export...
-        String fileName = "FILE INSERITO DA UTENTE";
-        try (PrintWriter outputStream = new PrintWriter(new FileWriter(fileName))) {
+    public static void exportToFile() {
+
+        try (PrintWriter outputStream = new PrintWriter(new FileWriter(chiediNome()))) {
             List<ToDo> toDoList = ToDoRepository.getToDoRepository().getToDoList();
             Iterator<ToDo> tdi = toDoList.iterator();
 
@@ -28,20 +28,23 @@ public class ToDoImportExport {
                 String sToDo = convertToString(tdi.next());
                 outputStream.println(sToDo);
             }
+        } catch (IOException ioe){
+            System.out.println("Errore nella scrittura");
         }
     }
 
     // da String su file a List<to-do> per poi _repository
-    public static void importToFile() throws IOException {
-        // Chiede all'utente un nome file di import...
-        String fileName = "FILE INSERITO DA UTENTE";
+    public static void importToFile() {
+
         ArrayList<String> fileLines = new ArrayList<>();
 
-        try (BufferedReader inputStream = new BufferedReader(new FileReader(fileName))) {
+        try (BufferedReader inputStream = new BufferedReader(new FileReader(chiediNome()))) {
             String l;
             while ((l = inputStream.readLine()) != null) {
                 fileLines.add(l);
             }
+        } catch (IOException ioe){
+            System.out.println("Errore nella lettura");
         }
         // Loop di conversione da stringhe (linne file) a oggetti TO-DO
         int contaToDo=0;
@@ -64,5 +67,12 @@ public class ToDoImportExport {
         }
         System.out.printf("Ho importato %d todo",contaToDo);
 
+    }
+
+    public static String chiediNome(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Inserisci il nome del file finendo con .txt");
+        String fileName = in.nextLine();
+        return fileName;
     }
 }
