@@ -1,8 +1,5 @@
 package ires.corso.test;
 
-import part2.classTest.toDo.ToDo;
-import part2.classTest.toDo.ToDoRepository;
-
 import java.util.Collections;
 import java.util.List;
 
