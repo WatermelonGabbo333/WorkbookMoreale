@@ -56,29 +56,29 @@ public class ToDoManager
             ToDo copia = todo.cloneForUpdate(idPerClone);
             // Loop di richiesta dati da modificare
             while (!uscita) {
+                Scanner input = new Scanner(System.in);
                 System.out.println("Cosa vuoi modificare ?");
                 System.out.println("Scegli tra : ");
                 System.out.println("titolo,descrizione,data di consegna,priorità,stato : ");
                 System.out.println("Per uscire premi q");
-                in = new Scanner(System.in);
-                String campo = in.nextLine();
+                String campo = input.nextLine();
                 switch (campo) {
                     case "titolo":
-                        copia.setTitolo(campo);
+                        copia.setTitolo(inputUtenteStringa(campo));
                         break;
                     case "descrizione":
-                        copia.setDescrizione(campo);
+                        copia.setDescrizione(inputUtenteStringa(campo));
                         break;
                     case "data di consegna":
                         try{
-                        copia.setDataConsegna(LocalDate.parse(campo));}catch (Exception e){
+                        copia.setDataConsegna(LocalDate.parse(inputUtenteStringa(campo)));}catch (Exception e){
                             System.out.println("Non hai inserito correttamente la data ritorno al menu precedente");
                             return;
                         }
                         break;
                     case "priorità":
                         try {
-                            copia.setPriorità(ToDo.Priorità.alta.valueOf(campo));
+                            copia.setPriorità(ToDo.Priorità.valueOf(inputUtenteStringa(campo)));
                         }catch (Exception e){
                             System.out.println("Non hai inserito correttamente la priorità ritorno al menu precedente");
                             return;
@@ -86,7 +86,7 @@ public class ToDoManager
                         break;
                     case "stato":
                         try {
-                            copia.setStato(ToDo.Stato.valueOf(campo));
+                            copia.setStato(ToDo.Stato.valueOf(inputUtenteStringa(campo)));
                         }catch (Exception e){
                             System.out.println("Non hai inserito correttamente lo stato ritorno al menu precedente");
                             return;
@@ -105,6 +105,13 @@ public class ToDoManager
         } else {
             System.out.println("L'id inserito non è presente");
         }
+    }
+
+    public static String inputUtenteStringa(String campo){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Inserisci nuovo "+ campo);
+        String inputs = input.nextLine();
+        return inputs;
     }
 
     public static void removeToDo(){
