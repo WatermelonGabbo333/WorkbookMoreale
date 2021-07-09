@@ -1,9 +1,6 @@
 package part2.classTest.collections;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Pagelle {
     public static void main(String[] args) {
@@ -69,12 +66,20 @@ public class Pagelle {
         assignment6.put(s3,7.0);
 
         Map<Assignment,Map<Student,Double>> corso3 = new HashMap<>();
-        corso3.put(a1,assignment1);
-        corso3.put(a2,assignment2);
+        corso3.put(a1, assignment1);
+        corso3.put(a2, assignment2);
 
         c3.setValutazioni(corso3);
 
-//medie voti per corso per studente
+        stampaMediaCorsoPerStudente(assignment1, assignment2, c1.getTitolo());
+        stampaMediaCorsoPerStudente(assignment3, assignment4, c2.getTitolo());
+        stampaMediaCorsoPerStudente(assignment5, assignment6, c3.getTitolo());
+
+
+
+
+//esplicitato
+
         System.out.println("Media corso Algebra primo studente : ");
         System.out.println((assignment1.get(s1)+assignment2.get(s1))/2);
         System.out.println("Media corso Algebra secondo studente : ");
@@ -95,7 +100,7 @@ public class Pagelle {
         System.out.println((assignment5.get(s2)+assignment6.get(s2))/2);
         System.out.println("Media corso Geometria terzo studente : ");
         System.out.println((assignment5.get(s3)+assignment6.get(s3))/2);
-
+/*
 //medie voti per assignment
         System.out.println("Media assignment 1 : ");
         System.out.println((assignment1.get(s1)+assignment1.get(s2)+assignment1.get(s3))/3);
@@ -109,5 +114,22 @@ public class Pagelle {
         System.out.println((assignment5.get(s1)+assignment5.get(s2)+assignment5.get(s3))/3);
         System.out.println("Media assignment 6 : ");
         System.out.println((assignment6.get(s1)+assignment6.get(s2)+assignment6.get(s3))/3);
+
+
+ */
+
+    }
+
+    public static void stampaMediaCorsoPerStudente(Map<Student,Double> assignment1, Map<Student,Double> assignment2, String corso){
+//voti assignment1
+        Double[] assD1A = assignment1.values().toArray(new Double[0]);
+        int contatore= assD1A.length;
+//voti assignment2
+        Double[] assD2A = assignment2.values().toArray(new Double[0]);
+//medie voti per corso per studente
+        for(int i=0;i<assD1A.length;i++){
+            System.out.println("Media corso "+ corso+" "+contatore+" studente "+(assD1A[i]+assD2A[i])/2);
+            contatore--;
+        }
     }
 }
