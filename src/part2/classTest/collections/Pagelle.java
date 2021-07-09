@@ -75,11 +75,15 @@ public class Pagelle {
         stampaMediaCorsoPerStudente(assignment3, assignment4, c2.getTitolo());
         stampaMediaCorsoPerStudente(assignment5, assignment6, c3.getTitolo());
 
-
-
+        stampaMediaPerAssignment(assignment1,a1.getTitolo());
+        stampaMediaPerAssignment(assignment2,a2.getTitolo());
+        stampaMediaPerAssignment(assignment3,a3.getTitolo());
+        stampaMediaPerAssignment(assignment4,a4.getTitolo());
+        stampaMediaPerAssignment(assignment5,a5.getTitolo());
+        stampaMediaPerAssignment(assignment6,a6.getTitolo());
 
 //esplicitato
-
+/*
         System.out.println("Media corso Algebra primo studente : ");
         System.out.println((assignment1.get(s1)+assignment2.get(s1))/2);
         System.out.println("Media corso Algebra secondo studente : ");
@@ -100,7 +104,7 @@ public class Pagelle {
         System.out.println((assignment5.get(s2)+assignment6.get(s2))/2);
         System.out.println("Media corso Geometria terzo studente : ");
         System.out.println((assignment5.get(s3)+assignment6.get(s3))/2);
-/*
+
 //medie voti per assignment
         System.out.println("Media assignment 1 : ");
         System.out.println((assignment1.get(s1)+assignment1.get(s2)+assignment1.get(s3))/3);
@@ -114,10 +118,7 @@ public class Pagelle {
         System.out.println((assignment5.get(s1)+assignment5.get(s2)+assignment5.get(s3))/3);
         System.out.println("Media assignment 6 : ");
         System.out.println((assignment6.get(s1)+assignment6.get(s2)+assignment6.get(s3))/3);
-
-
  */
-
     }
 
     public static void stampaMediaCorsoPerStudente(Map<Student,Double> assignment1, Map<Student,Double> assignment2, String corso){
@@ -131,5 +132,9 @@ public class Pagelle {
             System.out.println("Media corso "+ corso+" "+contatore+" studente "+(assD1A[i]+assD2A[i])/2);
             contatore--;
         }
+    }
+
+    public static void stampaMediaPerAssignment(Map<Student,Double> assignment,String nomeAssignment){
+        System.out.println("Media assignment "+nomeAssignment+"\n"+assignment.values().stream().mapToDouble(Double::valueOf).average().getAsDouble());
     }
 }
